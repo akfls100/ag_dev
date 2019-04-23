@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+<body>
+    {{> menu}}
+    
+    <form method="post" action="/login">
+        <div class="form_container">
+            <h1>{{heading}}</h1>
+            <hr>
+
+            <label for="username"><b>Username or Email</b></label>
+            <input type="text" placeholder="username or email" name="username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" name="password" required>
+
+            <input type="submit" class="form_button" value="Submit" id="login_button"/>
+        </div>
+    </form>
+</body>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+{{> footer}}
+</html>

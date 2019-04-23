@@ -1,0 +1,226 @@
+body {
+    font-family: Helvetica;
+    margin: 0 0 5% 0;
+}
+
+/* ------------------------------------------- MENU BAR ------------------------------------------- */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #4D99BF;
+}
+
+.active {
+    background-color: #5CB8E6;
+}
+
+.home_link {
+    padding: 0;
+    margin: 0;
+}
+
+.home_icon {
+    padding: 5px;
+    max-height: 32px;
+}
+
+/* ------------------------------------------- LOGIN PAGE ------------------------------------------- */
+
+.login {
+    float: right;
+}
+
+.username {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 0;
+}
+
+.form_container {
+    width: 80%;
+    margin: auto;
+    padding: 16px;
+    background-color: white;
+}
+
+#form_submit {
+    margin-top: 20px;
+}
+
+.form_button {
+    background-color: #5CB8E6;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 15px
+}
+
+.form_button:disabled {
+    background-color: #f1f1f1;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=password]:focus {
+    box-shadow: none;
+}
+
+/* TODO: FIX COLOURSSSS */
+.diff_pw {
+    border: 1px solid red;
+    box-shadow: 0 0 0 1px red;
+}
+
+.same_pw {
+    border: 1px solid green;
+    box-shadow: 0 0 0 1px green;
+}
+
+#pwd_message {
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* ------------------------------------------- NEW POST PAGE ------------------------------------------- */
+
+.post_text {
+    width: 100%;
+    padding: 15px;
+}
+
+/* ------------------------------------------- FORUM PAGE ------------------------------------------- */
+#message_container {
+    width: 80%;
+    margin: auto;
+    padding: 16px;
+}
+
+#message_container h1 {
+    margin-bottom: 0;
+}
+
+.message_list {
+    background-color: white;
+}
+
+.message_list > li {
+    float: none;
+    padding: 15px 15px 0 15px;
+    margin: 10px;
+}
+
+.message_list > li a {
+    color: black;
+    text-align: left;
+}
+
+.poster {
+    text-align: right;
+    margin: 0;
+    font-size: 0.8em;
+}
+
+.register_add > p,
+.register_add > button{
+    text-align: right;
+    margin-top: 0;
+    
+}
+
+a {
+    text-decoration: none;
+}
+
+.message_list > li a:hover {
+    background-color: white;
+    color: #336680;
+    font-weight: bold;
+}
+
+.message_list > p {
+    margin: auto;
+}
+
+.reg_link:visited {
+    color: #336680;
+}
+
+#edit_post_form {
+    display: none;
+}
+
+/* ------------------------------------------- THREAD PAGE ------------------------------------------- */
+#thread_container {
+    width: 80%;
+    margin: auto;
+    padding: 16px;
+}
+
+#replies_container {
+    width: 95%;
+    margin: auto 0 auto auto;
+}
+
+#replies_container ul{
+    background-color: white;
+}
+
+#replies_container li{
+    float: none;
+    padding: 15px;
+    margin: 10px;
+    border-bottom: 1px solid black;
+}
+
+#replies_container textarea {
+    width: 97%;
+    padding: 15px;
+}
+
+/* ------------------------------------------- Footer CSS ------------------------------------------- */
+.mainfoot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #111;
+    color: white;
+    text-align: center;
+    margin:auto;
+    font:15px;
+}
+
+.footerimg{
+    width: 44px;
+}

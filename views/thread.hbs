@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+
+<body>
+    {{> menu}}
+
+    <div id="thread_container">
+        <div id="op_container">
+            <h1>{{heading}}</h1>
+            <p>{{op_message}}</p>
+            <p>{{poster}}</p>
+            <p>{{date}}</p>
+            
+            {{#if isOP}}
+            <form method="post" action="/delete_post">
+                <input type="hidden" name="id" value={{id}}>
+                <input type="submit" value="Delete"></input>
+            </form>
+
+            <button id="edit_button" onclick="show_edit_form()">Edit Post</button>
+
+            {{!-- edit form --}}
+            <form method="post" action="/edit_post" id='edit_post_form'>
+            <br>
+                <label for="edit_textarea"><b>Edit Thread</b></label><br>
+                <input type="hidden" name="id" value={{id}}>
+                <textarea name="edit_textarea" rows="10" cols="50" class="edit_textarea">{{op_message}}</textarea><br>
+                <input type="submit" value="Edit"></input>
+            </form>
+            {{/if}}
+        </div>
+        
+        <hr>
+        
+        <div id="replies_container">
+            {{#if isAuthenticated}}
+            <form method="post" action="/add_reply">
+                <input type="hidden" name="id" value={{id}}>
+                <textarea name="reply" class="post_text" rows="10" cols="50" placeholder="Reply to this post!" required></textarea><br>
+                <input type="submit" value="Reply"></input>
+            </form>
+            {{/if}}
+            
+            <ul>
+            {{#each reply}}
+                <p>{{username}} replied on {{date}}</p>
+                <li>{{message}}
+                </li>
+            {{/each}}
+            </ul>
+        </div>
+    </div>
+</body>
+{{> footer}}
+<script src="/js/script.js"></script>
+</html>

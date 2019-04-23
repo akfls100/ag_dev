@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+
+<body>
+    {{> menu}}
+
+    <form method="post" action="/add_post" id="new_post_form">
+        <div class="form_container">
+            <h1>{{heading}}</h1>
+
+            <label for="title"><b>Title</b></label>
+            <input type="text" name="title" required>
+
+            <label for="message"><b>Message</b></label><br>
+            <textarea name="message" class="post_text" rows="10" cols="50" placeholder="What's on your mind?" required></textarea>
+            <br>
+            
+            <input type="submit" value="Submit" class="form_button" id="submit_post">
+        </div>
+    </form>
+</body>
+
+{{> footer}}
+<script src="js/script.js"></script>
+
+</html>

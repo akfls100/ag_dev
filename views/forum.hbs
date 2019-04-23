@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+
+<body>
+    {{> menu}}
+    <div id="message_container">
+        <div class="register_add">
+            <h1>{{heading}}</h1>
+            {{#if isAuthenticated}}
+                <p><button><a href="http://localhost:{{port}}/new_post">Add Post</a></button></p>
+            {{else}}
+                <p>
+                    <a href="http://localhost:{{port}}/registration" class="reg_link">Register a new account to start posting!</a>
+                </p>
+            {{/if}}
+        </div>
+        <hr>
+
+        <ul class="message_list">
+            {{#each message}}
+                <li><a href="http://localhost:{{port}}/thread/{{_id}}">{{title}}</a>
+                <p class="poster">Posted by: {{username}} on {{date}}</p>
+                <hr></li>
+            {{/each}}
+        </ul>
+    </div>
+</body>
+
+{{> footer}}
+
+</html>

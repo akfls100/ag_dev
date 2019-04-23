@@ -1,0 +1,32 @@
+{
+  "name": "2019nodejs_a3",
+  "version": "1.0.0",
+  "description": "ACIT2520_Assignment3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cat-box/2019NodeJS_A3.git"
+  },
+  "author": "Cathy Chan, Wilfred Ta, Kevin Yoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cat-box/2019NodeJS_A3/issues"
+  },
+  "homepage": "https://github.com/cat-box/2019NodeJS_A3#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "hbs": "^4.0.3",
+    "mongodb": "^3.2.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "request": "^2.88.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^8.8.1"
+  }
+}

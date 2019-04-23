@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+
+<body>
+    {{> menu}} 
+    <form method="post" action="/saveUser" id="registration_form">
+        <div class="form_container">
+            <h1>{{heading}}</h1>
+            <hr>
+
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="example@email.com" name="email" required>
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="username" name="username" required>
+
+            <label for="password"><b>Password</b></label>
+            <input type="password" name="password" id="password" minlength=6 required>
+            
+            <label for="password"><b>Confirm Password</b></label>
+            <input type="password" name="r_password" id="r_password" minlength=6 required>
+            
+            <span id='pwd_message'></span><br>
+
+            <input type="submit" class="form_button" id="form_submit" disabled>
+        </div>
+    </form>
+</body>
+{{> footer}}
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</html>
