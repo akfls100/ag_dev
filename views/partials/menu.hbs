@@ -1,12 +1,12 @@
 <div id="menu">
     <ul>
-        <li><a href="http://localhost:{{port}}/" class="home_link"><img src="/images/home.png"/ class="home_icon"></a></li>
+        <li><a href="/" class="home_link"><img src="/images/home.png"/ class="home_icon"></a></li>
         {{#if isAuthenticated}}
-            <li class="login"><a class="active" href="http://localhost:{{port}}/logout">Logout</a></li>
+            <li class="login"><a class="active" href="/logout">Logout</a></li>
             <li class="login"><p class="username">Welcome, {{user.username}}</p></li>
         {{else}}
-            <li class="login"><a class="active" href="http://localhost:{{port}}/login">Login</a></li>
-            <li class="login"><a href="http://localhost:{{port}}/registration">Register</a></li>
+            <li class="login"><a class="active" href="/login">Login</a></li>
+            <li class="login"><a href="/registration">Register</a></li>
         {{/if}}
     </ul>
 </div>

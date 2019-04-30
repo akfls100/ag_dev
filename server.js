@@ -12,6 +12,11 @@ const promises = require('./promises.js');
 
 const app = express();
 
+app.listen(port, () => {
+    console.log(`Server is up on the port ${port}`);
+    utils.init();
+});
+
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(express.static(__dirname + '/public'));
@@ -120,7 +125,7 @@ app.get('/thread/:id', async (request, response) => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Server is up on the port ${port}`);
-    utils.init();
-});
+// app.listen(port, () => {
+//     console.log(`Server is up on the port ${port}`);
+//     utils.init();
+// });
