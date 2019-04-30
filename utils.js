@@ -12,11 +12,11 @@ getObjectId = () => {
 
 init = (callback) => {
     const client = new MongoClient('mongodb+srv://kev:8ekNBO7U5LHNAOEJ@clusterk-0d6io.mongodb.net/test?retryWrites=true', {useNewUrlParser:true});
-    client.connect((err, client) => {
+    client.connect((err, result) => {
         if (err) {
             return console.log('Unable to connect to DB');
         }
-        _dbUser = client.db();
+        _dbUser = result.db();
         console.log('Successfully connected to MongoDB server');
     });
 };
