@@ -11,12 +11,11 @@ getObjectId = () => {
 };
 
 init = (callback) => {
-    const client = new MongoClient('mongodb+srv://kev:8ekNBO7U5LHNAOEJ@clusterk-0d6io.mongodb.net/test?retryWrites=true', {useNewUrlParser:true});
-    client.connect((err, result) => {
+    MongoClient.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/forumdb', (err, client) => {
         if (err) {
             return console.log('Unable to connect to DB');
         }
-        _dbUser = result.db();
+        _dbUser = client.db();
         console.log('Successfully connected to MongoDB server');
     });
 };
