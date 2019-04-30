@@ -24,7 +24,10 @@ function saveUser(request, response) {
     db.collection('users').find(query).toArray((err, result) => {
         if (result.length > 0) {
             setTimeout(function() {
-                return response.redirect('/');
+                response.render("registration.hbs", {
+                    title: 'Registration',
+                    heading: "<span style='color: red'>Already existing e-mail or username</span>"
+                });
             }, 2500);
         } else if (result.length == 0) {
             db.collection('users').insertOne({
