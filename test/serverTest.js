@@ -18,12 +18,28 @@ function wait(ms){
 
 describe('GET /', function () {
     this.timeout(5000);
-    it("Main page endpoint test ", function (done) {
+    it("Main page endpoint test", function (done) {
         wait(1000);
         chai.request(app)
             .get('/')
             .end(function(err, res) {
                 expect(res).to.have.status(200);
+                done()
+            })
+    });
+});
+
+describe('GET /', function () {
+    this.timeout(5000);
+    it("Database posts working properly", function (done) {
+        wait(1000);
+        chai.request(app)
+            .get('/')
+            .end(function(err, res) {
+                var str = res.text;
+                var patt = /PostForDatabaseTest/i;
+                var resu = patt.test(str);
+                assert.equal(resu, true);
                 done()
             })
     });
@@ -68,6 +84,26 @@ describe('GET /registration', function () {
     });
 });
 
+describe('POST /saveUser', function () {
+    this.timeout(5000);
+    it("Existing user in database", function (done) {
+        wait(1000);
+        chai.request(app)
+            .post('/saveUser')
+            .send({
+                "email": "raphael.pletz00@gmail.com",
+                "name": "Raphael_Pletz",
+                "password": "testestest"})
+            .end(function(err, res) {
+                var str = res.text;
+                var patt = /Already existing e-mail or username/i;
+                var resu = patt.test(str);
+                assert.equal(resu, true);
+                done()
+            })
+    });
+});
+
 describe('GET /new_post', function () {
     this.timeout(5000);
     it("New Post Endpoint test", function (done) {
@@ -80,3 +116,30 @@ describe('GET /new_post', function () {
             })
     });
 });
+
+describe('GET /thread/id', function () {
+    this.timeout(5000);
+    it("Test for specific thread on database", function (done) {
+        wait(1000);
+        chai.request(app)
+            .get('/thread/5ccb41f3a7ce1c2e74c05001')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done()
+            })
+    });
+});
+
+describe('GET /thread/id', function () {
+    this.timeout(5000);
+    it("Test for error in random thread", function (done) {
+        wait(1000);
+        chai.request(app)
+            .get('/thread/nonexistingthread')
+            .end(function(err, res) {
+                expect(res).to.have.status(404);
+                done()
+            })
+    });
+});
+

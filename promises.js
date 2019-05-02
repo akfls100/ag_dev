@@ -25,9 +25,13 @@ var threadPromise = (param_id) => {
         var db = utils.getDb();
         var ObjectId = utils.getObjectId();
 
-        var query = {
-            _id: ObjectId(param_id)
-        };
+        try {
+            var query = {
+                _id: ObjectId(param_id)
+            };
+        } catch (e) {
+            resolve(null)
+        }
 
         db.collection('messages').findOne(query, (err, result) => {
             if (err) {
