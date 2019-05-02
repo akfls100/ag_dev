@@ -125,7 +125,9 @@ app.get('/thread/:id', async (request, response) => {
     });
 });
 
-// app.listen(port, () => {
-//     console.log(`Server is up on the port ${port}`);
-//     utils.init();
-// });
+app.listen(port, () => {
+    console.log(`Server is up on the port ${port}`);
+    utils.init();
+});
+
+module.exports = app;

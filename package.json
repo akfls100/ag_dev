@@ -4,7 +4,7 @@
   "description": "agile_project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --exit",
     "start": "node server.js"
   },
   "repository": {
@@ -28,5 +28,12 @@
     "request": "^2.88.0",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^8.8.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^6.1.4",
+    "mocha-http": "^0.2.5",
+    "supertest": "^4.0.2"
   }
 }
