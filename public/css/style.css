@@ -224,3 +224,42 @@ a {
 .footerimg{
     width: 44px;
 }
+
+/*--------------------------------------------password validation message box-----------------------*/
+
+/* The message box is shown when password field is clicked */
+#pswmessage {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#pswmessage p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+  /* show green check mark when the requirement is met */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+  /* show red x with incomplete requirement */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
