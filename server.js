@@ -101,7 +101,7 @@ app.get('/:genre', async (request, response) => {
     
     response.render('forum.hbs', {
         title: 'Home',
-        heading: genre[0].name,
+        heading: genre.name,
         message: filtered_list,
         genre: request.params.genre,
     });

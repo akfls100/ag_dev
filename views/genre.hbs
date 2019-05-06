@@ -10,8 +10,13 @@
     <ul class="message_list">
         {{#each topic}}
             <li>
-                <button onclick="window.location.href='/{{genre}}'">{{name}}</button>
-            <hr></li>
+                <a href="/{{genre}}">
+                    <div style="position: relative; color: white; width: 300px; height: 175px; float: left">
+                        <img src="/images/{{genre}}.png" alt="{{name}}" style="width:100%">
+                        <div style="position: absolute; top: 8px; left: 16px">{{name}}</div>
+                    </div>
+                </a>
+            </li>
         {{/each}}
     </ul>
 </div>
