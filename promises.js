@@ -44,13 +44,11 @@ var specificGenre = (genre) => {
 
         db.collection('genres').find({
             genre: genre
-        }, {
-            _id: 0
-        }).toArray((err, result) => {
+        }, {}).toArray((err, result) => {
             if (err) {
                 reject(err);
             }
-            resolve(result.reverse());
+            resolve(result);
         });
     });
 };

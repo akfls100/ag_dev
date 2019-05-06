@@ -85,7 +85,7 @@ app.get('/', async (request, response) => {
 });
 
 // Forum page
-app.get('/:genre', async (request, response) => {
+app.get('/genre_board/:genre', async (request, response) => {
     promises.messagePromise();
 
     var topic = request.params.genre;
@@ -97,14 +97,17 @@ app.get('/:genre', async (request, response) => {
         }
     }
 
-    var genre = await promises.specificGenre(request.params.genre);
-    
-    response.render('forum.hbs', {
-        title: 'Home',
-        heading: genre.name,
-        message: filtered_list,
-        genre: request.params.genre,
-    });
+    var genre = await promises.specificGenre(topic);
+    try {
+        response.render('forum.hbs', {
+            title: 'Home',
+            heading: genre[0].name,
+            message: filtered_list,
+            genre: request.params.genre,
+        });
+    } catch (e) {
+        response.redirect('/')
+    }
 });
 
 // Adding new post
