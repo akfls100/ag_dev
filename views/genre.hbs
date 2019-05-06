@@ -8,10 +8,15 @@
 <div id="message_container">
     <hr>
     <ul class="message_list">
-        {{#each message}}
-            <li><a href="/thread/{{_id}}">{{title}}</a>
-                <p class="poster">Posted by: {{username}} on {{date}}</p>
-            <hr></li>
+        {{#each topic}}
+            <li>
+                <a href="/genre_board/{{genre}}">
+                    <div style="position: relative; color: white; width: 300px; height: 175px; float: left">
+                        <img src="/images/{{genre}}.png" alt="{{name}}" style="width:100%">
+                        <div style="position: absolute; top: 8px; left: 16px">{{name}}</div>
+                    </div>
+                </a>
+            </li>
         {{/each}}
     </ul>
 </div>

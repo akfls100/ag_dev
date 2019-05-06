@@ -71,24 +71,51 @@ app.get("/registration", checkAuthentication_false, (request, response) => {
     });
 });
 
-// Forum page
+// Main Page
 app.get('/', async (request, response) => {
     promises.messagePromise();
 
-    var messages = await promises.messagePromise();
-    
-    response.render('forum.hbs', {
+    var topic = await promises.genreList();
+
+    response.render('genre.hbs', {
         title: 'Home',
         heading: 'Message Board',
-        message: messages
+        topic: topic,
     });
 });
 
+// Forum page
+app.get('/genre_board/:genre', async (request, response) => {
+    promises.messagePromise();
+
+    var topic = request.params.genre;
+    var messages = await promises.messagePromise();
+    var filtered_list = [];
+    for (var i = 0; i < messages.length; i++) {
+        if (messages[i].genre === topic) {
+            filtered_list.push(messages[i])
+        }
+    }
+
+    var genre = await promises.specificGenre(topic);
+    try {
+        response.render('forum.hbs', {
+            title: 'Home',
+            heading: genre[0].name,
+            message: filtered_list,
+            genre: request.params.genre,
+        });
+    } catch (e) {
+        response.redirect('/')
+    }
+});
+
 // Adding new post
-app.get('/new_post', checkAuthentication, (request, response) => {
+app.get('/:genre/new_post', checkAuthentication, (request, response) => {
     response.render('new_post.hbs', {
         title: 'Post',
         heading: 'Add a post',
+        genre: request.params.genre
     });
 });
 
