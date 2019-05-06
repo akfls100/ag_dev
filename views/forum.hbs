@@ -9,7 +9,7 @@
         <div class="register_add">
             <h1>{{heading}}</h1>
             {{#if isAuthenticated}}
-                <p><button><a href="/new_post">Add Post</a></button></p>
+                <p><button><a href="/{{genre}}/new_post">Add Post</a></button></p>
             {{else}}
                 <p>
                     <a href="/registration" class="reg_link">Register a new account to start posting!</a>
