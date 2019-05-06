@@ -8,9 +8,9 @@
 <div id="message_container">
     <hr>
     <ul class="message_list">
-        {{#each message}}
-            <li><a href="/thread/{{_id}}">{{title}}</a>
-                <p class="poster">Posted by: {{username}} on {{date}}</p>
+        {{#each topic}}
+            <li>
+                <button onclick="window.location.href='/{{genre}}'">{{name}}</button>
             <hr></li>
         {{/each}}
     </ul>

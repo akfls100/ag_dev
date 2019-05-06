@@ -19,6 +19,42 @@ var messagePromise = () => {
     });
 };
 
+// Populates message board page with the titles of each
+// message in the database
+var genreList = () => {
+    return new Promise((resolve, reject) => {
+        var db = utils.getDb();
+
+        db.collection('genres').find({}, {
+            _id: 0
+        }).toArray((err, result) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(result.reverse());
+        });
+    });
+};
+
+// Populates message board page with the titles of each
+// message in the database
+var specificGenre = (genre) => {
+    return new Promise((resolve, reject) => {
+        var db = utils.getDb();
+
+        db.collection('genres').find({
+            genre: genre
+        }, {
+            _id: 0
+        }).toArray((err, result) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(result.reverse());
+        });
+    });
+};
+
 // Retrieves thread details
 var threadPromise = (param_id) => {
     return new Promise((resolve, reject) => {
@@ -59,7 +95,9 @@ var replyPromise = (param_id) => {
 };
 
 module.exports = {
-    messagePromise: messagePromise,
-    threadPromise: threadPromise,
-    replyPromise: replyPromise
+    messagePromise,
+    threadPromise,
+    replyPromise,
+    genreList,
+    specificGenre
 };
