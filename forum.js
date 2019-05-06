@@ -7,7 +7,7 @@ var router = express.Router();
 router.use(pass);
 
 // Add post to the db
-router.post('/add_post', add_post);
+router.post('/:genre/add_post', add_post);
 router.post('/add_reply', add_reply);
 router.post('/delete_post', delete_post);
 router.post('/edit_post', edit_post);
@@ -39,7 +39,8 @@ function add_post(request, response) {
         username: username,
         type: 'thread',
         date: get_date(),
-        thread_id: null
+        thread_id: null,
+        genre: request.params.genre
     }, (err, result) => {
         if (err) {
             response.send('Unable to post message');

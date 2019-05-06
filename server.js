@@ -71,24 +71,51 @@ app.get("/registration", checkAuthentication_false, (request, response) => {
     });
 });
 
-// Forum page
+// Main Page
 app.get('/', async (request, response) => {
     promises.messagePromise();
 
-    var messages = await promises.messagePromise();
-    
-    response.render('forum.hbs', {
+    var topic = await promises.genreList();
+
+    response.render('genre.hbs', {
         title: 'Home',
         heading: 'Message Board',
-        message: messages
+        topic: topic,
     });
 });
 
+// Forum page
+app.get('/genre_board/:genre', async (request, response) => {
+    promises.messagePromise();
+
+    var topic = request.params.genre;
+    var messages = await promises.messagePromise();
+    var filtered_list = [];
+    for (var i = 0; i < messages.length; i++) {
+        if (messages[i].genre === topic) {
+            filtered_list.push(messages[i])
+        }
+    }
+
+    var genre = await promises.specificGenre(topic);
+    try {
+        response.render('forum.hbs', {
+            title: 'Home',
+            heading: genre[0].name,
+            message: filtered_list,
+            genre: request.params.genre,
+        });
+    } catch (e) {
+        response.redirect('/')
+    }
+});
+
 // Adding new post
-app.get('/new_post', checkAuthentication, (request, response) => {
+app.get('/:genre/new_post', checkAuthentication, (request, response) => {
     response.render('new_post.hbs', {
         title: 'Post',
         heading: 'Add a post',
+        genre: request.params.genre
     });
 });
 
@@ -97,30 +124,36 @@ app.get('/thread/:id', async (request, response) => {
     promises.threadPromise(request.params.id);
     var thread = await promises.threadPromise(request.params.id);
 
-    promises.replyPromise(request.params.id);
-    var replies = await promises.replyPromise(request.params.id);
+    if (thread === null) {
+        response.status(404).send('Thread does not exist')
+    } else {
+        promises.replyPromise(request.params.id);
+        var replies = await promises.replyPromise(request.params.id);
 
-    var isOP = false;
-    if (request.user != undefined){
-        if (request.user.username == thread.username) {
-            isOP = true;
+        var isOP = false;
+        if (request.user != undefined) {
+            if (request.user.username == thread.username) {
+                isOP = true;
+            }
         }
-    }
 
-    response.render('thread.hbs', {
-        title: 'Thread',
-        heading: thread.title,
-        op_message: thread.message,
-        poster: thread.username,
-        date: thread.date,
-        id: thread._id,
-        reply: replies,
-        isOP: isOP,
-        thread: thread
-    });
+        response.render('thread.hbs', {
+            title: 'Thread',
+            heading: thread.title,
+            op_message: thread.message,
+            poster: thread.username,
+            date: thread.date,
+            id: thread._id,
+            reply: replies,
+            isOP: isOP,
+            thread: thread
+        });
+    }
 });
 
 app.listen(port, () => {
     console.log(`Server is up on the port ${port}`);
     utils.init();
 });
+
+module.exports = app;

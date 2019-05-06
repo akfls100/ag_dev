@@ -8,7 +8,7 @@
     {{> menu}} 
     <form method="post" action="/saveUser" id="registration_form">
         <div class="form_container">
-            <h1>{{heading}}</h1>
+            <h1>{{{heading}}}</h1>
             <hr>
 
             <label for="email"><b>Email</b></label>
@@ -18,16 +18,24 @@
             <input type="text" placeholder="username" name="username" required>
 
             <label for="password"><b>Password</b></label>
-            <input type="password" name="password" id="password" minlength=6 required>
+            <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
             
             <label for="password"><b>Confirm Password</b></label>
-            <input type="password" name="r_password" id="r_password" minlength=6 required>
+            <input type="password" name="r_password" id="r_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
             
             <span id='pwd_message'></span><br>
 
             <input type="submit" class="form_button" id="form_submit" disabled>
         </div>
     </form>
+
+    <div id="pswmessage">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
 </body>
 {{> footer}}
 <script src="js/script.js"></script>

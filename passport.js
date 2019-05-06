@@ -52,7 +52,6 @@ router.post('/login',
 passport.use(new LocalStrategy((username, password, done) => {
 
     var db = utils.getDb();
-
     db.collection('users').findOne({
         username: username,
         password: password
