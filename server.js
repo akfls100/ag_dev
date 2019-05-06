@@ -12,11 +12,6 @@ const promises = require('./promises.js');
 
 const app = express();
 
-app.listen(port, () => {
-    console.log(`Server is up on the port ${port}`);
-    utils.init();
-});
-
 hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(express.static(__dirname + '/public'));
@@ -102,27 +97,31 @@ app.get('/thread/:id', async (request, response) => {
     promises.threadPromise(request.params.id);
     var thread = await promises.threadPromise(request.params.id);
 
-    promises.replyPromise(request.params.id);
-    var replies = await promises.replyPromise(request.params.id);
+    if (thread === null) {
+        response.status(404).send('Thread does not exist')
+    } else {
+        promises.replyPromise(request.params.id);
+        var replies = await promises.replyPromise(request.params.id);
 
-    var isOP = false;
-    if (request.user != undefined){
-        if (request.user.username == thread.username) {
-            isOP = true;
+        var isOP = false;
+        if (request.user != undefined) {
+            if (request.user.username == thread.username) {
+                isOP = true;
+            }
         }
-    }
 
-    response.render('thread.hbs', {
-        title: 'Thread',
-        heading: thread.title,
-        op_message: thread.message,
-        poster: thread.username,
-        date: thread.date,
-        id: thread._id,
-        reply: replies,
-        isOP: isOP,
-        thread: thread
-    });
+        response.render('thread.hbs', {
+            title: 'Thread',
+            heading: thread.title,
+            op_message: thread.message,
+            poster: thread.username,
+            date: thread.date,
+            id: thread._id,
+            reply: replies,
+            isOP: isOP,
+            thread: thread
+        });
+    }
 });
 
 app.listen(port, () => {

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> header}}
+
+<body>
+{{> menu}}
+<div id="message_container">
+    <hr>
+    <ul class="message_list">
+        {{#each message}}
+            <li><a href="/thread/{{_id}}">{{title}}</a>
+                <p class="poster">Posted by: {{username}} on {{date}}</p>
+            <hr></li>
+        {{/each}}
+    </ul>
+</div>
+</body>
+
+{{> footer}}
+
+</html>
