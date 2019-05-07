@@ -16,10 +16,11 @@
             {{#if isOP}}
             <form method="post" action="/delete_post">
                 <input type="hidden" name="id" value={{id}}>
-                <input type="submit" value="Delete"></input>
+                <input class="btn btn-primary" type="submit" value="Delete"></input>
+                <button id="edit_button" class="btn btn-primary" onclick="show_edit_form()">Edit Post</button>
             </form>
 
-            <button id="edit_button" onclick="show_edit_form()">Edit Post</button>
+
 
             {{!-- edit form --}}
             <form method="post" action="/edit_post" id='edit_post_form'>
@@ -27,7 +28,7 @@
                 <label for="edit_textarea"><b>Edit Thread</b></label><br>
                 <input type="hidden" name="id" value={{id}}>
                 <textarea name="edit_textarea" rows="10" cols="50" class="edit_textarea">{{op_message}}</textarea><br>
-                <input type="submit" value="Edit"></input>
+                <input class="btn btn-primary" type="submit" value="Edit"></input>
             </form>
             {{/if}}
         </div>
@@ -39,7 +40,7 @@
             <form method="post" action="/add_reply">
                 <input type="hidden" name="id" value={{id}}>
                 <textarea name="reply" class="post_text" rows="10" cols="50" placeholder="Reply to this post!" required></textarea><br>
-                <input type="submit" value="Reply"></input>
+                <input id="reply_button" class="btn btn-primary" type="submit" value="Reply"></input>
             </form>
             {{/if}}
             
@@ -54,5 +55,6 @@
     </div>
 </body>
 {{> footer}}
+
 <script src="/js/script.js"></script>
 </html>

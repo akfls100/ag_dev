@@ -114,10 +114,15 @@ input[type=password]:focus {
 
 /* ------------------------------------------- NEW POST PAGE ------------------------------------------- */
 
+}
 .post_text {
     width: 100%;
     padding: 15px;
+    border: 2px solid black;
+
 }
+
+
 
 /* ------------------------------------------- FORUM PAGE ------------------------------------------- */
 #message_container {
@@ -185,15 +190,21 @@ a {
     width: 80%;
     margin: auto;
     padding: 16px;
+
+
 }
 
 #replies_container {
     width: 95%;
     margin: auto 0 auto auto;
+
+
 }
 
 #replies_container ul{
     background-color: white;
+
+
 }
 
 #replies_container li{
@@ -206,8 +217,19 @@ a {
 #replies_container textarea {
     width: 97%;
     padding: 15px;
+
+
 }
 
+#edit_button {
+
+   margin-left: 20px;
+}
+
+#reply_button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 /* ------------------------------------------- Footer CSS ------------------------------------------- */
 .mainfoot {
     position: fixed;
