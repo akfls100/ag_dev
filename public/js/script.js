@@ -14,7 +14,7 @@ function confirm_password() {
         (document.getElementsByName('r_password'))[0].className="diff_pw";
     }
     else {
-        document.getElementById('pwd_message').innerHTML = 'Passwords match! s(\'-^)b';
+        document.getElementById('pwd_message').innerHTML = 'Passwords match! <i class="em em-smile"></i>';
         document.getElementById('form_submit').disabled=false;
 
         (document.getElementsByName('password'))[0].className="same_pw";
