@@ -4,43 +4,33 @@ body {
 }
 
 /* ------------------------------------------- MENU BAR ------------------------------------------- */
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+
+
+nav li{
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-li {
-    float: left;
+
+a.logo {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: normal;
+    font-size: 40px;
+    text-transform: capitalize;
+    color: #FFFFFF;
 }
 
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+@media (max-width: 460px) {
+    nav a.logo{
+        font-size: 25px;
+    }
+    nav img{
+        height: 40px;
+        width: 57px;
+    }
 }
 
-li a:hover:not(.active) {
-    background-color: #4D99BF;
-}
-
-.active {
-    background-color: #5CB8E6;
-}
-
-.home_link {
-    padding: 0;
-    margin: 0;
-}
-
-.home_icon {
-    padding: 5px;
-    max-height: 32px;
-}
 
 /* ------------------------------------------- LOGIN PAGE ------------------------------------------- */
 
@@ -232,19 +222,13 @@ a {
 }
 /* ------------------------------------------- Footer CSS ------------------------------------------- */
 .mainfoot {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #111;
-    color: white;
-    text-align: center;
-    margin:auto;
-    font:15px;
+    height: 70px;
+    vertical-align: bottom;
 }
 
-.footerimg{
-    width: 44px;
+.align-right {
+    color: white;
+    text-align: right;
 }
 
 /*--------------------------------------------password validation message box-----------------------*/
@@ -256,12 +240,11 @@ a {
     color: #000;
     position: relative;
     padding: 20px;
-    margin-top: 10px;
 }
 
 #pswmessage p {
-    padding: 10px 35px;
-    font-size: 18px;
+    padding: 0px 35px;
+    font-size: 14px;
 }
 
   /* show green check mark when the requirement is met */
@@ -285,3 +268,59 @@ a {
     left: -35px;
     content: "✖";
 }
+
+.pass-style {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0
+}
+
+/*main forum page*/
+
+.genre-text{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.main-text{
+    position: absolute;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #5D6CEC;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.box:hover .genre-text{
+    color: #E5E5E5
+}
+
+.search-bar input[type=text]:focus{
+    border-bottom: 2px solid #5D6CEC;
+    box-shadow: 0 1px 0 0 #5D6CEC;
+
+
+}
+
+.search-bar .fa {
+    color: #5D6CEC;
+
+}
+
+.pt-60{
+    padding-top: 60px;
+}
+
+.pb-60{
+    padding-bottom: 60px;
+}
+
+
+
