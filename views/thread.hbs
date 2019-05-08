@@ -14,11 +14,20 @@
             <p>{{date}}</p>
             
             {{#if isOP}}
-            <form method="post" action="/delete_post">
-                <input type="hidden" name="id" value={{id}}>
-                <input class="btn btn-primary" type="submit" value="Delete"></input>
-                <button id="edit_button" class="btn btn-primary" onclick="show_edit_form()">Edit Post</button>
-            </form>
+            <div class="container">
+              <div class="row">
+                <div class=".col-sm-1">
+                  <form method="post" action="/delete_post">
+                  <input type="hidden" name="id" value={{id}}>
+                  <input class="btn btn-primary" type="submit" value="Delete">
+                </form>
+              </div>
+                <div class=".col-sm-2">
+                     <button id="edit_button" class="btn btn-primary" onclick="show_edit_form()">Edit Post</button>
+                 </div>
+              </div>
+            </div>
+
 
 
 
