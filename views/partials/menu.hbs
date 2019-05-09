@@ -1,12 +1,22 @@
-<div id="menu">
-    <ul>
-        <li><a href="/" class="home_link"><img src="/images/home.png" class="home_icon"></a></li>
-        {{#if isAuthenticated}}
-            <li class="login"><a class="active" href="/logout">Logout</a></li>
-            <li class="login"><p class="username">Welcome, {{user.username}}</p></li>
-        {{else}}
-            <li class="login"><a class="active" href="/login">Login</a></li>
-            <li class="login"><a href="/registration">Register</a></li>
-        {{/if}}
-    </ul>
-</div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark navbar-fixed-top">
+    <div class="container-fluid main-menu" id="menu">
+        <a class="navbar-brand logo py-0" href="/">
+            <img src="/images/rabbit.png" width="72" height="50" alt="logo">  Rabbit Forum
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                {{#if isAuthenticated}}
+                    <li class="login nav-item ml-auto"><a class="active" href="/logout"><button type="button" class="btn btn-outline-light" >Logout</button></a></li>
+                    <li class="login nav-item ml-auto"><p class="username">Welcome, {{user.username}}</p></li>
+                {{else}}
+                    <li class="login nav-item ml-auto"><a class="active" href="/login"><button type="button" class="btn btn-outline-light" >Login</button></a></li>
+                    <li class="login nav-item ml-auto"><a href="/registration"><button type="button" class="btn btn-outline-light" >Register</button></a></li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

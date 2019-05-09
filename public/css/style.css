@@ -263,3 +263,8 @@ a {
     left: -35px;
     content: "✖";
 }
+
+/* colour stays white even it's clicked */
+a:link, a:visited {
+    color: white;
+}
