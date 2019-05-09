@@ -269,6 +269,11 @@ a {
     content: "✖";
 }
 
+/* colour stays white even it's clicked */
+a:link, a:visited {
+    color: white;
+}
+
 .pass-style {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -321,6 +326,5 @@ a {
 .pb-60{
     padding-bottom: 60px;
 }
-
 
 
