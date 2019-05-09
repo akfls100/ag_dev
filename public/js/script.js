@@ -27,23 +27,6 @@ function registration_alert() {
     setTimeout(function () {
         form.submit();
     }, 5000);
-    if (form.checkValidity() != false) {
-        Swal.fire({
-            title: "Checking over your credentials!",
-            type: "success",
-            showConfirmButton: false,
-            timer: 2000,
-        });
-    }
-    else {
-        Swal.fire({
-            title: "Error!",
-            text: "Please fill out all the fields!",
-            type: "error",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    }
 }
 
 function show_edit_form() {

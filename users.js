@@ -36,7 +36,10 @@ function saveUser(request, response) {
                 if (err) {
                     response.send('Unable to register user');
                 }
-                response.redirect('/login');
+                response.render('login.hbs', {
+                    title: 'Login',
+                    heading: "<h1 class='text-success'>Account successfully created!</h1>"
+                });
             });
         }
     });
