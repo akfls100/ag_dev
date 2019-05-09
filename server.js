@@ -54,6 +54,13 @@ app.get('/login', (request, response) => {
     });
 });
 
+app.get('/login_failed', (request, response) => {
+    response.render('login.hbs', {
+        title: 'Login',
+        heading: "<h1 class='text-danger'>Username and Password do not match</h1>"
+    });
+});
+
 // Logout Page
 app.get('/logout', (request, response) => {
     request.logout();

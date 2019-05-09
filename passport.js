@@ -42,7 +42,7 @@ passport.deserializeUser((id, done) => {
 
 router.post('/login',
     passport.authenticate('local', {
-        failureRedirect: '/login'
+        failureRedirect: '/login_failed'
     }), (req, res) => {
         res.redirect('/');
     }

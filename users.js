@@ -25,7 +25,7 @@ function saveUser(request, response) {
         if (result.length > 0) {
             response.render("registration.hbs", {
                 title: 'Registration',
-                heading: "<span style='color: red'>Already existing e-mail or username</span>"
+                heading: "<span class='text-danger'>Already existing e-mail or username</span>"
             });
         } else if (result.length == 0) {
             db.collection('users').insertOne({
