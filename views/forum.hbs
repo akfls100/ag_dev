@@ -23,11 +23,11 @@
         </div>
         <hr>
 
-        <ul class="message_list">
+        <ul class="message_list list-group">
             {{#each message}}
-                <li><a href="/thread/{{_id}}">{{title}}</a>
-                <p class="poster">Posted by: {{username}} on {{date}}</p>
-                <hr></li>
+                <a href="/thread/{{_id}}" class="list-group-item list-group-item-action">{{title}}
+                    <p class="poster">Posted by: {{username}} on {{date}}</p>
+                </a>
             {{/each}}
         </ul>
     </div>
@@ -37,6 +37,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
-{{> footer}}
 
 </html>
