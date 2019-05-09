@@ -30,6 +30,7 @@ function add_post(request, response) {
     var title = request.body.title;
     var message = request.body.message;
     var username = request.user.username;
+    var chosen_genre = request.params.genre;
 
     var db = utils.getDb();
 
@@ -40,12 +41,12 @@ function add_post(request, response) {
         type: 'thread',
         date: get_date(),
         thread_id: null,
-        genre: request.params.genre
+        genre: chosen_genre
     }, (err, result) => {
         if (err) {
             response.send('Unable to post message');
         }
-        response.redirect('/');
+        response.redirect('/genre_board/' + chosen_genre);
     });
 }
 
@@ -105,7 +106,7 @@ function add_reply(request, response) {
         if (err) {
             response.send('Unable to post message');
         }
-        response.redirect('/');
+        response.redirect('back');
     });
 }
 
