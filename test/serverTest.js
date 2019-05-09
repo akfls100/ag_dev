@@ -87,6 +87,18 @@ describe('GET /all_genres', function () {
     });
 });
 
+describe('GET /non-existing-genre', function () {
+    this.timeout(5000);
+    it("Not existing genre test", function (done) {
+        wait(1000);
+        chai.request(app)
+            .get('/genre_board/not-existing-genre')
+            .end(function(err, res) {
+                expect(res).to.redirect;
+                done()
+            })
+    });
+});
 
 describe('GET /logout', function () {
     this.timeout(5000);
