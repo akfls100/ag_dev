@@ -104,7 +104,7 @@ input[type=password]:focus {
 
 /* ------------------------------------------- NEW POST PAGE ------------------------------------------- */
 
-}
+
 .post_text {
     width: 100%;
     padding: 15px;
@@ -269,16 +269,6 @@ a {
     content: "✖";
 }
 
-/* colour stays white even it's clicked */
-a:link, a:visited {
-    color: white;
-}
-
-.pass-style {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    padding-top: 0
-}
 
 /*main forum page*/
 
