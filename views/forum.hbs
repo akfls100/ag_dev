@@ -13,14 +13,12 @@
             {{#if isAuthenticated}}
                 <div class="col-2 offset-7">
                     <a href="/{{genre}}/new_post">
-                        <input type="button" class="btn btn-dark" value="New Post"/>
+                        <input type="button" style="margin-top: 10px" class="btn btn-dark" value="New Post"/>
                     </a>
                 </div>
 
             {{else}}
-                <p>
-                    <a href="/registration" class="reg_link">Register a new account to start posting!</a>
-                </p>
+                    <a href="/registration" class="col-10 offset-7" style="margin: 15px 0 0;">Register a new account to start posting!</a>
             {{/if}}
         </div>
         <hr>

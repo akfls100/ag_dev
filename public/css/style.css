@@ -261,6 +261,13 @@ a {
   /* show red x with incomplete requirement */
 .invalid {
     color: red;
+    margin-bottom: 0;
+}
+
+.pass-style {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0
 }
 
 .invalid:before {
