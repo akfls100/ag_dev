@@ -32,7 +32,7 @@ describe('GET /', function () {
 describe('GET /all_genres', function () {
     this.timeout(5000);
     it("Sports working properly", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/sports')
             .end(function(err, res) {
@@ -41,7 +41,7 @@ describe('GET /all_genres', function () {
             })
     });
     it("Games working properly", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/games')
             .end(function(err, res) {
@@ -50,7 +50,7 @@ describe('GET /all_genres', function () {
             })
     });
     it("Music working properly", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/music')
             .end(function(err, res) {
@@ -59,7 +59,7 @@ describe('GET /all_genres', function () {
             })
     });
     it("News working properly", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/news')
             .end(function(err, res) {
@@ -68,7 +68,7 @@ describe('GET /all_genres', function () {
             })
     });
     it("TV/Movies working properly", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/tv-movies')
             .end(function(err, res) {
@@ -77,7 +77,7 @@ describe('GET /all_genres', function () {
             })
     });
     it("General working properly", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/general')
             .end(function(err, res) {
@@ -90,7 +90,7 @@ describe('GET /all_genres', function () {
 describe('GET /non-existing-genre', function () {
     this.timeout(5000);
     it("Not existing genre test", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/genre_board/not-existing-genre')
             .end(function(err, res) {
@@ -103,7 +103,7 @@ describe('GET /non-existing-genre', function () {
 describe('GET /logout', function () {
     this.timeout(5000);
     it("Logout Endpoint test", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/logout')
             .end(function(err, res) {
@@ -116,7 +116,7 @@ describe('GET /logout', function () {
 describe('GET /login', function () {
     this.timeout(5000);
     it("Login Endpoint test", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/login')
             .end(function(err, res) {
@@ -129,7 +129,7 @@ describe('GET /login', function () {
 describe('POST /login', function () {
     this.timeout(5000);
     it("Not matching credentials", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .post('/login')
             .send({
@@ -149,7 +149,7 @@ describe('POST /login', function () {
 describe('GET /registration', function () {
     this.timeout(5000);
     it("Registration Endpoint test", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/registration')
             .end(function(err, res) {
@@ -162,7 +162,7 @@ describe('GET /registration', function () {
 describe('POST /saveUser', function () {
     this.timeout(5000);
     it("Existing user in database", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .post('/saveUser')
             .send({
@@ -182,7 +182,7 @@ describe('POST /saveUser', function () {
 describe('GET /new_post', function () {
     this.timeout(5000);
     it("New Post Endpoint test", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/sports/new_post')
             .end(function(err, res) {
@@ -195,7 +195,7 @@ describe('GET /new_post', function () {
 describe('GET /thread/id', function () {
     this.timeout(5000);
     it("Test for specific thread on database", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/thread/5cd3782cd4441e2644e72881')
             .end(function(err, res) {
@@ -208,7 +208,7 @@ describe('GET /thread/id', function () {
 describe('GET /thread/id', function () {
     this.timeout(5000);
     it("Test for error in random thread", function (done) {
-        wait(1000);
+        // wait(1000);
         chai.request(app)
             .get('/thread/nonexistingthread')
             .end(function(err, res) {
