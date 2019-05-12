@@ -14,12 +14,14 @@
     </div>
     <div class="row justify-content-center pt-60">
         <div class="input-group search-bar col-sm-6">
-            <input class="form-control py-2 border-right-0 border mt-0" type="text" placeholder="Search" aria-label="Search">
+            <form style="display: inline; width: 100%" method="post" action="/search">
+            <input class="form-control py-2 border-right-0 border mt-0" name="search" type="text" placeholder="Search" aria-label="Search">
             <span class="input-group-append search-bar">
-                <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                <button class="btn btn-outline-secondary border-left-0 border" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
               </span>
+            </form>
         </div>
     </div>
 </div>
