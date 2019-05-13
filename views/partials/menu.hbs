@@ -11,6 +11,22 @@
         <div class="collapse navbar-collapse text-right" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 {{#if isAuthenticated}}
+                    <li class="login nav-item ml-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Notifications
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            {{#each user.notification}}
+                                <a class="dropdown-item" href="/thread/{{_id}}">New Reply on {{title}}</a>
+                            {{else}} <a class="dropdown-item" href="#">No new notifications</a>
+                            {{/each}}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/clearnotification">Clear Notifications</a>
+
+                        </div>
+                    </div>
+                    </li>
                     <li class="login nav-item ml-auto"><a class="active" href="/logout"><button type="button" class="btn btn-outline-light" >Logout</button></a></li>
                     <li class="login nav-item ml-auto"><p class="username">Welcome, {{user.username}}</p></li>
                 {{else}}
