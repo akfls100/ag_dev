@@ -31,7 +31,8 @@ function saveUser(request, response) {
             db.collection('users').insertOne({
                 email: email,
                 username: username,
-                password: password
+                password: password,
+                notification: []
             }, (err, result) => {
                 if (err) {
                     response.send('Unable to register user');

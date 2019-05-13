@@ -10,6 +10,8 @@ const pass = require('./passport.js');
 const forum = require('./forum.js');
 const promises = require('./promises.js');
 
+const search_script = require('./search_script.js');
+
 const app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -80,14 +82,26 @@ app.get("/registration", checkAuthentication_false, (request, response) => {
 
 // Main Page
 app.get('/', async (request, response) => {
-    promises.messagePromise();
-
     var topic = await promises.genreList();
 
     response.render('genre.hbs', {
         title: 'Home',
         heading: 'Message Board',
         topic: topic,
+    });
+});
+
+// Main Page
+app.post('/search', async (request, response) => {
+    var text_to_search = request.body.search;
+    var message_list = await promises.messagePromise();
+
+    var filtered_messages = await search_script.search(text_to_search, message_list);
+
+    response.render('forum.hbs', {
+        title: 'Home',
+        message: filtered_messages,
+        heading: 'Results for ' + text_to_search
     });
 });
 

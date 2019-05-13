@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cat-box/2019NodeJS_A3#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
