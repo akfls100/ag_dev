@@ -9,7 +9,7 @@
     <div id="thread_container">
         <div id="op_container">
             <h1>{{heading}}</h1>
-            <p>{{op_message}}</p>
+            <p>{{{op_message}}}</p>
             <p>{{poster}}</p>
             <p>{{date}}</p>
             
@@ -56,7 +56,7 @@
             <ul>
             {{#each reply}}
                 <p>{{username}} replied on {{date}}</p>
-                <li>{{message}}
+                <li>{{{message}}}
                 </li>
             {{/each}}
             </ul>

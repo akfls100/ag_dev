@@ -151,12 +151,21 @@ app.get('/thread/:id', async (request, response) => {
         promises.replyPromise(request.params.id);
         var replies = await promises.replyPromise(request.params.id);
 
+        for (var i = 0; i < replies.length; i++) {
+            var text = replies[i].message;
+            text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+            replies[i].message = text;
+        }
+
+
         var isOP = false;
         if (request.user != undefined) {
             if (request.user.username == thread.username) {
                 isOP = true;
             }
         }
+
+        thread.message = thread.message.replace(/(\r\n|\n|\r)/gm, '<br>');
 
         response.render('thread.hbs', {
             title: 'Thread',
