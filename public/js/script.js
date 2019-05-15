@@ -14,7 +14,7 @@ function confirm_password() {
         (document.getElementsByName('r_password'))[0].className="diff_pw";
     }
     else {
-        document.getElementById('pwd_message').innerHTML = 'Passwords match! s(\'-^)b';
+        document.getElementById('pwd_message').innerHTML = 'Passwords match! <i class="em em-smile"></i>';
         document.getElementById('form_submit').disabled=false;
 
         (document.getElementsByName('password'))[0].className="same_pw";
@@ -27,23 +27,6 @@ function registration_alert() {
     setTimeout(function () {
         form.submit();
     }, 5000);
-    if (form.checkValidity() != false) {
-        Swal.fire({
-            title: "Checking over your credentials!",
-            type: "success",
-            showConfirmButton: false,
-            timer: 2000,
-        });
-    }
-    else {
-        Swal.fire({
-            title: "Error!",
-            text: "Please fill out all the fields!",
-            type: "error",
-            showConfirmButton: false,
-            timer: 1500
-        });
-    }
 }
 
 function show_edit_form() {

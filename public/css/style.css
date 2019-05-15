@@ -1,45 +1,43 @@
 body {
     font-family: Helvetica;
     margin: 0 0 5% 0;
+    min-width: 400px;
 }
 
 /* ------------------------------------------- MENU BAR ------------------------------------------- */
-ul {
-    list-style-type: none;
-    margin: 0;
+
+
+nav li{
+
+    padding-right: 10px;
+}
+
+
+a.logo {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: normal;
+    font-size: 40px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+@media (max-width: 480px) {
+    nav a.logo{
+        font-size: 30px;
+    }
+    nav img{
+        height: 45px;
+        width: 64px;
+    }
+}
+
+.navbar-brand {
     padding: 0;
-    overflow: hidden;
-    background-color: #333;
 }
 
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #4D99BF;
-}
-
-.active {
-    background-color: #5CB8E6;
-}
-
-.home_link {
-    padding: 0;
-    margin: 0;
-}
-
-.home_icon {
-    padding: 5px;
-    max-height: 32px;
+.pad-top-bot{
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 /* ------------------------------------------- LOGIN PAGE ------------------------------------------- */
@@ -114,10 +112,15 @@ input[type=password]:focus {
 
 /* ------------------------------------------- NEW POST PAGE ------------------------------------------- */
 
+
 .post_text {
     width: 100%;
     padding: 15px;
+    border: 2px solid black;
+
 }
+
+
 
 /* ------------------------------------------- FORUM PAGE ------------------------------------------- */
 #message_container {
@@ -185,15 +188,21 @@ a {
     width: 80%;
     margin: auto;
     padding: 16px;
+
+
 }
 
 #replies_container {
     width: 95%;
     margin: auto 0 auto auto;
+
+
 }
 
 #replies_container ul{
     background-color: white;
+
+
 }
 
 #replies_container li{
@@ -206,23 +215,28 @@ a {
 #replies_container textarea {
     width: 97%;
     padding: 15px;
+
+
 }
 
+#edit_button {
+   margin-bottom: 20px;
+   margin-left: 20px;
+}
+
+#reply_button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 /* ------------------------------------------- Footer CSS ------------------------------------------- */
 .mainfoot {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #111;
-    color: white;
-    text-align: center;
-    margin:auto;
-    font:15px;
+    height: 70px;
+    vertical-align: bottom;
 }
 
-.footerimg{
-    width: 44px;
+.align-right {
+    color: white;
+    text-align: right;
 }
 
 /*--------------------------------------------password validation message box-----------------------*/
@@ -234,12 +248,11 @@ a {
     color: #000;
     position: relative;
     padding: 20px;
-    margin-top: 10px;
 }
 
 #pswmessage p {
-    padding: 10px 35px;
-    font-size: 18px;
+    padding: 0px 35px;
+    font-size: 14px;
 }
 
   /* show green check mark when the requirement is met */
@@ -256,6 +269,13 @@ a {
   /* show red x with incomplete requirement */
 .invalid {
     color: red;
+    margin-bottom: 0;
+}
+
+.pass-style {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0
 }
 
 .invalid:before {
@@ -263,3 +283,53 @@ a {
     left: -35px;
     content: "✖";
 }
+
+
+/*main forum page*/
+
+.genre-text{
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+
+.main-text{
+    position: absolute;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #5D6CEC;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.box:hover .genre-text{
+    color: #E5E5E5
+}
+
+.search-bar input[type=text]:focus{
+    border-bottom: 2px solid #5D6CEC;
+    box-shadow: 0 1px 0 0 #5D6CEC;
+
+
+}
+
+.search-bar .fa {
+    color: #5D6CEC;
+
+}
+
+.pt-60{
+    padding-top: 60px;
+}
+
+.pb-60{
+    padding-bottom: 60px;
+}
+
+

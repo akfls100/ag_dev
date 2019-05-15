@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 {{> header}}
-
 <body>
 {{> menu}}
+
+
+<div class="container-fluid">
+    <div class="row d-flex align-items-center justify-content-center pb-60">
+        <div class="col-xl-4"style="width:365px;">
+            <p class="main-text text-center">Welcome to the Rabbit Forum! Join us at various discussions and have fun conversations!</p>
+        </div>
+    </div>
+    <div class="row justify-content-center pt-60">
+            <form method="post" action="/search" class="col-8">
+                <div class="input-group search-bar" >
+                    <input class="form-control py-2 border-right-0 border mt-0" name="search" type="text" placeholder="Search" aria-label="Search">
+                    <span class="input-group-append search-bar">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </form>
+    </div>
+</div>
 <div id="message_container">
-    <hr>
-    <ul class="message_list">
+    <div class="container">
+        <div class="row justify-content-center" style="margin-bottom: 40px">
+            <p class="main-text">Forum Categories</p>
+        </div>
+        <div class="row justify-content-center" style="padding-top: 40px">
         {{#each topic}}
-            <li>
+            <div class="card m-1 box" style="width: 18rem; position: relative;">
                 <a href="/genre_board/{{genre}}">
-                    <div style="position: relative; color: white; width: 300px; height: 175px; float: left">
-                        <img src="/images/{{genre}}.png" alt="{{name}}" style="width:100%">
-                        <div style="position: absolute; top: 8px; left: 16px">{{name}}</div>
-                    </div>
+                <img class="card-img-top" src="images/{{genre}}.png" alt="{{name}}">
+                    <div class="genre-text">{{name}}</div>
                 </a>
-            </li>
+
+            </div>
         {{/each}}
-    </ul>
+        </div>
+    </div>
 </div>
 </body>
-
-{{> footer}}
 
 </html>

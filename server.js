@@ -10,6 +10,8 @@ const pass = require('./passport.js');
 const forum = require('./forum.js');
 const promises = require('./promises.js');
 
+const search_script = require('./search_script.js');
+
 const app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -54,6 +56,13 @@ app.get('/login', (request, response) => {
     });
 });
 
+app.get('/login_failed', (request, response) => {
+    response.render('login.hbs', {
+        title: 'Login',
+        heading: "<h1 class='text-danger'>Username and Password do not match</h1>"
+    });
+});
+
 // Logout Page
 app.get('/logout', (request, response) => {
     request.logout();
@@ -73,14 +82,26 @@ app.get("/registration", checkAuthentication_false, (request, response) => {
 
 // Main Page
 app.get('/', async (request, response) => {
-    promises.messagePromise();
-
     var topic = await promises.genreList();
 
     response.render('genre.hbs', {
         title: 'Home',
         heading: 'Message Board',
         topic: topic,
+    });
+});
+
+// Main Page
+app.post('/search', async (request, response) => {
+    var text_to_search = request.body.search;
+    var message_list = await promises.messagePromise();
+
+    var filtered_messages = await search_script.search(text_to_search, message_list);
+
+    response.render('forum.hbs', {
+        title: 'Home',
+        message: filtered_messages,
+        heading: 'Results for ' + text_to_search
     });
 });
 
@@ -130,12 +151,21 @@ app.get('/thread/:id', async (request, response) => {
         promises.replyPromise(request.params.id);
         var replies = await promises.replyPromise(request.params.id);
 
+        for (var i = 0; i < replies.length; i++) {
+            var text = replies[i].message;
+            text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+            replies[i].message = text;
+        }
+
+
         var isOP = false;
         if (request.user != undefined) {
             if (request.user.username == thread.username) {
                 isOP = true;
             }
         }
+
+        thread.message = thread.message.replace(/(\r\n|\n|\r)/gm, '<br>');
 
         response.render('thread.hbs', {
             title: 'Thread',
