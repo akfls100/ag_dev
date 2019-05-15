@@ -1,15 +1,15 @@
 body {
     font-family: Helvetica;
     margin: 0 0 5% 0;
+    min-width: 400px;
 }
 
 /* ------------------------------------------- MENU BAR ------------------------------------------- */
 
 
 nav li{
+
     padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 
@@ -21,16 +21,24 @@ a.logo {
     color: #FFFFFF;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 480px) {
     nav a.logo{
-        font-size: 25px;
+        font-size: 30px;
     }
     nav img{
-        height: 40px;
-        width: 57px;
+        height: 45px;
+        width: 64px;
     }
 }
 
+.navbar-brand {
+    padding: 0;
+}
+
+.pad-top-bot{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
 /* ------------------------------------------- LOGIN PAGE ------------------------------------------- */
 
