@@ -11,6 +11,7 @@ router.post('/:genre/add_post', add_post);
 router.post('/add_reply', add_reply);
 router.post('/delete_post', delete_post);
 router.post('/edit_post', edit_post);
+router.get('/clearnotification', clearNotification);
 
 function get_date() {
     var date = new Date();
@@ -30,7 +31,8 @@ function add_post(request, response) {
     var title = request.body.title;
     var message = request.body.message;
     var username = request.user.username;
-    
+    var chosen_genre = request.params.genre;
+
     var db = utils.getDb();
 
     db.collection('messages').insertOne({
@@ -40,14 +42,12 @@ function add_post(request, response) {
         type: 'thread',
         date: get_date(),
         thread_id: null,
-        genre: request.params.genre
+        genre: chosen_genre
     }, (err, result) => {
         if (err) {
             response.send('Unable to post message');
         }
-        logger.logDB("Add Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor");
-
-        response.redirect('/');
+        response.redirect('/genre_board/' + chosen_genre);
     });
 }
 
@@ -66,7 +66,6 @@ function edit_post(request, response) {
         if (err) {
             response.send('Unable to edit message');
         }
-        logger.logDB("Edit Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor")
         response.redirect('/');
     });
 }
@@ -87,7 +86,6 @@ function delete_post(request, response) {
         if (err) {
             response.send('Unable to delete message');
         }
-        logger.logDB("Delete Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor")
         response.redirect('/');
     });
 }
@@ -109,9 +107,39 @@ function add_reply(request, response) {
         if (err) {
             response.send('Unable to post message');
         }
-        logger.logDB("Add Reply", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor")
-        response.redirect('/');
+        addNotification(thread_id);
+        response.redirect('back');
     });
+}
+
+async function addNotification(thread_id) {
+    var db = utils.getDb();
+    var ObjectId = utils.getObjectId();
+    var thread = await db.collection('messages').findOne({
+        _id: ObjectId(thread_id)
+    });
+    var user = thread.username;
+    var dbuser = await db.collection('users').findOne({
+        username: user
+    });
+    var notifications = dbuser.notification;
+    notifications.unshift(thread);
+    db.collection('users').findOneAndUpdate({
+        username: user
+    }, {
+        $set: {notification: notifications}
+    }, (err, items) => {})
+}
+
+function clearNotification(request, response) {
+    var db = utils.getDb();
+    var username = request.user.username;
+    db.collection('users').findOneAndUpdate({
+        username: username
+    }, {
+        $set: {notification: []}
+    }, (err, items) => {});
+    response.redirect('back')
 }
 
 module.exports = router;

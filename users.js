@@ -1,6 +1,5 @@
 const express = require('express');
 var utils = require('./utils');
-let logger = require('./logger')
 
 var router = express.Router();
 
@@ -12,7 +11,7 @@ function saveUser(request, response) {
     var email = request.body.email;
     var username = request.body.username;
     var password = request.body.password;
-    logger.loguser("Register", 'Success', username)
+
     var db = utils.getDb();
 
     var query = {
@@ -22,23 +21,26 @@ function saveUser(request, response) {
         ]
     };
 
-
     db.collection('users').find(query).toArray((err, result) => {
         if (result.length > 0) {
             response.render("registration.hbs", {
                 title: 'Registration',
-                heading: "<span style='color: red'>Already existing e-mail or username</span>"
+                heading: "<span class='text-danger'>Already existing e-mail or username</span>"
             });
         } else if (result.length == 0) {
             db.collection('users').insertOne({
                 email: email,
                 username: username,
-                password: password
+                password: password,
+                notification: []
             }, (err, result) => {
                 if (err) {
                     response.send('Unable to register user');
                 }
-                response.redirect('/login');
+                response.render('login.hbs', {
+                    title: 'Login',
+                    heading: "<h1 class='text-success'>Account successfully created!</h1>"
+                });
             });
         }
     });
