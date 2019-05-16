@@ -25,6 +25,8 @@ passport.serializeUser((user, done) => {
     done(null, user._id);
 });
 
+/*LogOUT */
+
 passport.deserializeUser((id, done) => {
     var db = utils.getDb();
     var ObjectId = utils.getObjectId();
