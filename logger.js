@@ -29,7 +29,7 @@ let loguser = (action, status, username, time = date.toString()) => {
         }
     });
 };
-logger.logDB("Add Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor")
+
 let logDB = (action, username, status = "Success", time = date.toString()) => {
     if(!username)
         username = "Visitor";
