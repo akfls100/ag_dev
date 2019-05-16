@@ -27,7 +27,6 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
     var db = utils.getDb();
-    logger.loguser("Logout", "Success", username);
     var ObjectId = utils.getObjectId();
 
     db.collection('users').findOne({
@@ -36,6 +35,7 @@ passport.deserializeUser((id, done) => {
         if (user._id == id){
             return done(null, user);
         }
+        logger.loguser("Logout", "Success", user);
         return done(err, false);
     });
 });
