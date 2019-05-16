@@ -17,7 +17,7 @@ let loguser = (action, status, username, time = date.toString()) => {
                 logs = [log];
             }
             db.collection("logs").updateOne({
-                type: "authentication"
+                type: "authentications"
             }, {
                 $set:{
                     logs: logs
