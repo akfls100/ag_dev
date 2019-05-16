@@ -1,6 +1,7 @@
 const express = require('express');
 const utils = require('./utils');
 const pass = require('./passport.js');
+const logger = require('./logger');
 
 var router = express.Router();
 
@@ -47,6 +48,7 @@ function add_post(request, response) {
         if (err) {
             response.send('Unable to post message');
         }
+        logger.logDB("Add Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor");
         response.redirect('/genre_board/' + chosen_genre);
     });
 }
@@ -66,6 +68,7 @@ function edit_post(request, response) {
         if (err) {
             response.send('Unable to edit message');
         }
+        logger.logDB("Edit Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor");
         response.redirect('/');
     });
 }
@@ -86,6 +89,7 @@ function delete_post(request, response) {
         if (err) {
             response.send('Unable to delete message');
         }
+        logger.logDB("Delete Forum Post", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor");
         response.redirect('/');
     });
 }
@@ -107,6 +111,7 @@ function add_reply(request, response) {
         if (err) {
             response.send('Unable to post message');
         }
+        logger.logDB("Add Reply", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor")
         addNotification(thread_id);
         response.redirect('back');
     });
