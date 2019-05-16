@@ -222,6 +222,7 @@ a {
 #edit_button {
    margin-bottom: 20px;
    margin-left: 20px;
+   left: 0px;
 }
 
 #reply_button {
