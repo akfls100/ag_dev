@@ -111,7 +111,7 @@ function add_reply(request, response) {
         if (err) {
             response.send('Unable to post message');
         }
-        logger.logDB("Add Reply", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor")
+        logger.logDB("Add Reply", req.headers["x-forwarded-for"] || req.connection.remoteAddress || "Visitor");
         addNotification(thread_id);
         response.redirect('back');
     });
@@ -133,7 +133,7 @@ async function addNotification(thread_id) {
         username: user
     }, {
         $set: {notification: notifications}
-    }, (err, items) => {})
+    }, (err, items) => {});
 }
 
 function clearNotification(request, response) {
@@ -144,7 +144,7 @@ function clearNotification(request, response) {
     }, {
         $set: {notification: []}
     }, (err, items) => {});
-    response.redirect('back')
+    response.redirect('back');
 }
 
 module.exports = router;
