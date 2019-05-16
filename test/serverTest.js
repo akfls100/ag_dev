@@ -19,7 +19,7 @@ function wait(ms){
 describe('GET /', function () {
     this.timeout(5000);
     it("Main page endpoint test", function (done) {
-        wait(1000);
+        wait(2000);
         chai.request(app)
             .get('/')
             .end(function(err, res) {
@@ -186,6 +186,7 @@ describe('GET /new_post', function () {
         chai.request(app)
             .get('/sports/new_post')
             .end(function(err, res) {
+
                 expect(res).to.have.status(200);
                 done()
             })
@@ -197,7 +198,7 @@ describe('GET /thread/id', function () {
     it("Test for specific thread on database", function (done) {
         // wait(1000);
         chai.request(app)
-            .get('/thread/5cd3782cd4441e2644e72881')
+            .get('/thread/5cd4d5c0e293350017d1ce68')
             .end(function(err, res) {
                 expect(res).to.have.status(200);
                 done()
