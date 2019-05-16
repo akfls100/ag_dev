@@ -76,7 +76,7 @@ var threadPromise = (param_id) => {
     });
 };
 
-// Retrieves all replies of a thread
+// Retrieves all replies of a threads
 var replyPromise = (param_id) => {
     return new Promise ((resolve, reject) => {
         var db = utils.getDb();

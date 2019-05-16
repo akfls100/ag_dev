@@ -4,6 +4,7 @@ const utils = require('./utils');
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const logger = require('./logger');
 
 var router = express.Router();
 
@@ -24,10 +25,10 @@ passport.serializeUser((user, done) => {
     done(null, user._id);
 });
 
+/*LogOUT */
+
 passport.deserializeUser((id, done) => {
     var db = utils.getDb();
-
-    // TODO: FIX THIS SHIT
     var ObjectId = utils.getObjectId();
 
     db.collection('users').findOne({
@@ -36,6 +37,7 @@ passport.deserializeUser((id, done) => {
         if (user._id == id){
             return done(null, user);
         }
+        logger.loguser("Logout", "Success", user);
         return done(err, false);
     });
 });
@@ -57,8 +59,13 @@ passport.use(new LocalStrategy((username, password, done) => {
         password: password
     }, (err, user) => {
         if (err) {
+            logger.loguser("Login", "Failed", username);
+            return done(null, false);
+        }else if(user === null){
+            logger.loguser("Login", "Failed", username);
             return done(null, false);
         }
+        logger.loguser("Login", "Success", username);
         return done(null, user);
     });
 }
