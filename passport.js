@@ -4,6 +4,7 @@ const utils = require('./utils');
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const logger = require('./logger');
 
 var router = express.Router();
 
@@ -26,8 +27,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
     var db = utils.getDb();
-
-    // TODO: FIX THIS SHIT
+    logger.loguser("Logout", "Success", username);
     var ObjectId = utils.getObjectId();
 
     db.collection('users').findOne({
@@ -50,15 +50,19 @@ router.post('/login',
 
 /* LOCAL AUTHENTICATION */
 passport.use(new LocalStrategy((username, password, done) => {
-
     var db = utils.getDb();
     db.collection('users').findOne({
         username: username,
         password: password
     }, (err, user) => {
         if (err) {
+            logger.loguser("Login", "Failed", username);
+            return done(null, false);
+        }else if(user === null){
+            logger.loguser("Login", "Failed", username);
             return done(null, false);
         }
+        logger.loguser("Login", "Success", username);
         return done(null, user);
     });
 }

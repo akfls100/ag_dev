@@ -67,7 +67,7 @@ myInput.onfocus = function() {
     document.getElementById("pswmessage").style.display = "block";
 };
 
-// When the user clicks outside password, hide message box
+// When the user clicks outside password, message box still appears
 myInput.onblur = function() {
     document.getElementById("pswmessage").style.display = "block";
 };

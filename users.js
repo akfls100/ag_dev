@@ -1,5 +1,6 @@
 const express = require('express');
 var utils = require('./utils');
+let logger = require('./logger')
 
 var router = express.Router();
 
@@ -11,7 +12,7 @@ function saveUser(request, response) {
     var email = request.body.email;
     var username = request.body.username;
     var password = request.body.password;
-
+    logger.loguser("Register", 'Success', username)
     var db = utils.getDb();
 
     var query = {
@@ -20,6 +21,7 @@ function saveUser(request, response) {
             {username: username}
         ]
     };
+
 
     db.collection('users').find(query).toArray((err, result) => {
         if (result.length > 0) {
