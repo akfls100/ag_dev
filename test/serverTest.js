@@ -1,12 +1,10 @@
 const request = require('supertest');
 const assert = require('chai').assert;
 const expect = require('chai').expect;
-
 var chai = require('chai'), chaiHttp = require('chai-http');
-
 chai.use(chaiHttp);
-
 const app = require('../server');
+const search_script = require('../search_script.js');
 
 function wait(ms){
     var start = new Date().getTime();
@@ -219,3 +217,34 @@ describe('GET /thread/id', function () {
     });
 });
 
+describe('Tests for the search script', function () {
+    this.timeout(5000);
+    it("Working exactly match", async function () {
+        // wait(1000);
+        var result = await search_script.search('test', [{title: 'hello', message: 'test message'}]);
+        assert.equal(result[0].point, 1);
+    });
+    it("No matches", async function () {
+        // wait(1000);
+        var result = await search_script.search('test', [{title: 'hello', message: 'not message'}]);
+        assert.isEmpty(result);
+    });
+    it("Similar word matches", async function () {
+        // wait(1000);
+        var result = await search_script.search('cinema', [{title: 'test', message: 'theater test'}]);
+        assert.equal(result.length, 1);
+    });
+    it("Two exactly messages", async function () {
+        // wait(1000);
+        var result = await search_script.search('test test', [{title: 'hello', message: 'test message'}]);
+        assert.equal(result[0].point, 2);
+    });
+    it("Properly sorting", async function () {
+        // wait(1000);
+        var result = await search_script.search('test message', [{title: 'hello', message: 'test message'}
+                                                                                    , {title: 'hello', message: 'test'}]);
+        assert.equal(result.length, 2);
+        assert.equal(result[0].point, 2);
+        assert.equal(result[1].point, 1);
+    });
+});
