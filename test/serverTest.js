@@ -27,6 +27,18 @@ describe('GET /', function () {
     });
 });
 
+describe('GET /', function () {
+    this.timeout(5000);
+    it("Main page endpoint test", function (done) {
+        chai.request(app)
+            .get('/')
+            .end(function(err, res) {
+                expect(res).to.have.status(200);
+                done()
+            })
+    });
+});
+
 describe('GET /all_genres', function () {
     this.timeout(5000);
     it("Sports working properly", function (done) {
